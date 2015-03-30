@@ -2,14 +2,14 @@
 using System.Collections;
 
 public class PlayerControl : MonoBehaviour {
+	public float speed;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void FixedUpdate()
+	{
+		float moveHorizongtal = Input.GetAxis ("Horizontal");
+		float moveVertical = Input.GetAxis ("Vertical");
+
+		Vector3 movement = new Vector3 (moveHorizongtal,0,moveVertical);
+		GetComponent<Rigidbody>().AddForce (movement * speed * Time.deltaTime);
 	}
 }
